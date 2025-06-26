@@ -122,10 +122,10 @@ def main():
     # Adapta as opções baseado no dispositivo
     is_mobile = detectar_mobile()
     if is_mobile:
-        modo_opcoes = ["Escolher foto", "Tirar nova foto"]
-        modo_help = "� Em dispositivos móveis: 'Escolher foto' abre câmera/galeria, 'Tirar nova foto' usa câmera diretamente"
+        modo_opcoes = ["Tirar nova foto", "Escolher foto da galeria"]
+        modo_help = "� Em dispositivos móveis: 'Escolher foto da galeria' abre câmera/galeria, 'Tirar nova foto' usa câmera diretamente"
     else:
-        modo_opcoes = ["Escolher foto", "Tirar foto com webcam"]
+        modo_opcoes = ["Tirar foto com webcam", "Escolher foto da galeria"]
         modo_help = "💻 No computador: escolha arquivo ou use a webcam"
     
     modo = st.radio("🖼️ Como deseja enviar a imagem?", modo_opcoes, help=modo_help)
@@ -139,7 +139,7 @@ def main():
         st.session_state.processar_imagem = False
         st.session_state.ultimo_modo = modo
 
-    if modo == "Escolher foto":
+    if modo == "Escolher foto da galeria":
         if is_mobile:
             st.info("📱 **Dica para celular:** Ao tocar no botão abaixo, escolha 'Câmera' para tirar uma nova foto ou 'Galeria' para selecionar uma foto existente.")
         
